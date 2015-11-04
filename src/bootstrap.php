@@ -39,15 +39,21 @@ if ($env !== 'production') {
 $whoops->register();
 
 /**
+ * Instantiate dependency injector
+ */
+$injector = include('dependencies.php');
+
+/**
  * Create and populate the request object
  */
-$request = Request::createFromGlobals();
+// $request = Request::createFromGlobals();
+$request = $injector->make('Symfony\Component\HttpFoundation\Request');
 
 /**
  * Create and prepare a sample response
  */
-$response = new Response();
-$response->headers->set('Content-Type', 'text/html');
+// $response = new Response();
+$response = $injector->make('Symfony\Component\HttpFoundation\Response');
 
 /**
  * Initialize route dispatcher
@@ -99,7 +105,7 @@ switch ($routeInfo[0]) {
         $method = $handler[1];
         $vars = $routeInfo[2];
 
-        $class = new $className;
+        $class = $injector->make($className);
         $class->$method($vars);
         break;
 }
