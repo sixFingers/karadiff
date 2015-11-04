@@ -1,0 +1,21 @@
+{
+    "name": "sixfingers/karadiff",
+    "description": "A diffing tool for music lyrics.",
+    "require-dev": {
+        "phpunit/phpunit": "^5.0"
+    },
+    "license": "DWTFYW",
+    "authors": [
+        {
+            "name": "Ignazio Setti",
+            "email": "ignazio.setti@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Karadiff\\": "src/"
+        }
+    }
+}
