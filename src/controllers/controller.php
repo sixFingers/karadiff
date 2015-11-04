@@ -18,20 +18,4 @@ class Controller
         // Let's assume we won't make any json for now.
         $this->response->headers->set('Content-Type', 'text/html');
     }
-
-    protected function template($path, $vars, $output = false)
-    {
-        $path = __DIR__ . '/../templates/' . $path;
-        extract($vars);
-
-        ob_start();
-        require_once($path);
-        $content = ob_get_clean();
-
-        if(false === $output) {
-            return $content;
-        } else {
-            echo $content;
-        }
-    }
 }
