@@ -2,6 +2,24 @@
 
 namespace Karadiff;
 
+/**
+ * Define and set php error handler
+ *
+ * This snippet is commented out, but serves
+ * as a simple example of handling php errors
+ * at code level. We're using Whoops here, which
+ * takes care of this for us.
+ */
+// function exceptions_error_handler($severity, $message, $filename, $lineno) {
+//     // Everything below FATAL will trigger an exception
+//     throw new ErrorException($message, 0, $severity, $filename, $lineno);
+// }
+
+//set_error_handler('exceptions_error_handler');
+
+/**
+ * Require all the things
+ */
 require __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
