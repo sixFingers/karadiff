@@ -18,4 +18,12 @@ class Controller
         // Let's assume we won't make any json for now.
         $this->response->headers->set('Content-Type', 'text/html');
     }
+
+    protected function template($path, $vars)
+    {
+        $path = __DIR__ . '/../templates/' . $path;
+        extract($vars);
+
+        require_once($path);
+    }
 }

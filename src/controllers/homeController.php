@@ -6,7 +6,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->response->setContent('<h1>Index</h1>');
+        $content = $this->template('welcome.html', [
+            'title' => 'Welcome'
+        ]);
+        $this->response->setContent($content);
         $this->response->send();
     }
 }
