@@ -19,7 +19,7 @@ class Controller
         $this->response->headers->set('Content-Type', 'text/html');
     }
 
-    protected function template($path, $vars, $return = true)
+    protected function template($path, $vars, $output = false)
     {
         $path = __DIR__ . '/../templates/' . $path;
         extract($vars);
@@ -28,7 +28,7 @@ class Controller
         require_once($path);
         $content = ob_get_clean();
 
-        if(true === $return) {
+        if(false === $output) {
             return $content;
         } else {
             echo $content;
