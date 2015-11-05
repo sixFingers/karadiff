@@ -14,5 +14,7 @@ $injector->define('Symfony\Component\HttpFoundation\Request', [
     ':files' => $_FILES,
     ':server' => $_SERVER,
 ]);
+$injector->alias('DiffProvider', 'Karadiff\Diff\Providers\DiffProvider');
+$injector->share('Karadiff\Diff\Providers\DiffProvider');
 
 return $injector;
