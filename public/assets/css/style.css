@@ -3,4 +3,17 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #ededed;
+}
+
+.padded {
+    margin: 2%;
+}
+
+textarea {
+    display: inline-block;
+    border: 0;
+    outline: none;
+    width: 96%;
+    min-height: 500px;
 }

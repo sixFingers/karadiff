@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'GET / HomeController@index'
+    'GET / HomeController@index',
+    'POST / HomeController@index'
 ];

@@ -1,9 +1,26 @@
 <?php require_once 'partials/_header.html'; ?>
-<h1><?php echo $title; ?></h1>
 
-<div class="pure-g">
-    <div class="pure-u-1-2">Original text</div>
-    <div class="pure-u-1-2">Changed text</div>
-</div>
+<form action="" method="post">
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+            <div class="padded">
+                <h1><?php echo $title; ?></h1>
+                <?php echo $additions; ?> additions, <?php echo $removals; ?> removals
+            </div>
+        </div>
+        <div class="pure-u-1-2"></div>
+        <div class="pure-u-1-2">
+            <textarea class="padded" name="original"><?php echo $original; ?></textarea>
+        </div>
+        <div class="pure-u-1-2">
+            <textarea class="padded" name="changed"><?php echo $changed; ?></textarea>
+        </div>
+        <div class="pure-u-1-1">
+            <div class="padded">
+                <input type="submit" />
+            </div>
+        </div>
+    </div>
+</form>
 
 <?php require_once 'partials/_footer.html'; ?>
