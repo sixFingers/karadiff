@@ -13,3 +13,10 @@ There's no functional test coverage yet.
 The diff algorithm is inspired by GNU's `diff` and the renderer used in the webapp implements GNU's `wdiff` basic idea.
 The algorithm is called after its creator, Douglas McIlroy.
 This implementation for PHP is partially ported from Tim Peters' implementation as found in the original `difflib` Python library.
+
+## Current output
+At the moment, the webapps crudely outputs diffs like:
+
+`-word` (removal) `+word` (addition) ` ` (common text).
+
+On the left side are displayed the removals, on the right one the additions.
