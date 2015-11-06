@@ -29,7 +29,7 @@ class DiffProviderFileTest extends PHPUnit_Framework_TestCase
         $bSliceLength = 2;
         $actual = $provider->slices;
 
-        $this->assertEquals(2, count($actual), 'Diff slice count mismatch.');
+        $this->assertEquals(3, count($actual), 'Diff slice count mismatch.');
         $this->assertEquals($aStartFirst, $actual[0]->aStart, 'File a, first slice offset mismatch.');
         $this->assertEquals($bStartFirst, $actual[0]->bStart, 'File b, first slice offset mismatch.');
         $this->assertEquals($aSliceLength, $actual[0]->length, 'First slice length mismatch.');
