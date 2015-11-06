@@ -14,7 +14,7 @@ class HomeController extends Controller
         $sides = ['', ''];
         $additionsCount = $removalsCount = 0;
 
-        if($this->request->isMethod(Request::METHOD_POST)) {
+        if ($this->request->isMethod(Request::METHOD_POST)) {
             $original = $this->request->request->get('original', '');
             $changed = $this->request->request->get('changed', '');
             $provider = new DiffProviderStringWord($original, $changed);

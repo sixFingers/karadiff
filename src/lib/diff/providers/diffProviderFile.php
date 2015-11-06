@@ -6,7 +6,8 @@ use Karadiff\Diff\Diff;
 
 class DiffProviderFile extends DiffProvider
 {
-    protected function splitIntoTokens() {
+    protected function splitIntoTokens()
+    {
         $this->aContent = file_get_contents($this->aContent);
         $this->bContent = file_get_contents($this->bContent);
         $this->aContent = trim($this->aContent);

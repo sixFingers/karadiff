@@ -14,7 +14,8 @@ class DiffProvider
     public $additions = 0;
     public $slices;
 
-    public function __construct($aContent, $bContent) {
+    public function __construct($aContent, $bContent)
+    {
         $this->aContent = $aContent;
         $this->bContent = $bContent;
 
@@ -22,12 +23,14 @@ class DiffProvider
         $this->calculate();
     }
 
-    protected function splitIntoTokens() {
+    protected function splitIntoTokens()
+    {
         $this->aTokens = $this->aContent;
         $this->bTokens = $this->bContent;
     }
 
-    protected function calculate() {
+    protected function calculate()
+    {
         $slices = $this->matchingSlices(0, count($this->aTokens), 0, count($this->bTokens));
         // Ensure we cover everything until the end of b content (just for counting purposes)
         $endSlice = new DiffSlice(count($this->aTokens), count($this->bTokens), 0);
@@ -35,12 +38,12 @@ class DiffProvider
 
         $ia = $ib = 0;
 
-        foreach($slices as $slice) {
-            for($l = $ia; $l < $slice->aStart; $l ++) {
+        foreach ($slices as $slice) {
+            for ($l = $ia; $l < $slice->aStart; $l ++) {
                 $this->removals ++;
             }
 
-            for($l = $ib; $l < $slice->bStart; $l ++) {
+            for ($l = $ib; $l < $slice->bStart; $l ++) {
                 $this->additions ++;
             }
 

@@ -17,16 +17,16 @@ class DiffRendererText extends DiffRenderer
         $ia = $ib = 0;
         $output = '';
 
-        foreach($slices as $slice) {
-            for($l = $ia; $l < $slice->aStart; $l ++) {
+        foreach ($slices as $slice) {
+            for ($l = $ia; $l < $slice->aStart; $l ++) {
                 $output .= "- {$this->provider->aTokens[$l]}\n";
             }
 
-            for($l = $ib; $l < $slice->bStart; $l ++) {
+            for ($l = $ib; $l < $slice->bStart; $l ++) {
                 $output .= "+ {$this->provider->bTokens[$l]}\n";
             }
 
-            for($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
+            for ($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
                 $output .= "  {$this->provider->aTokens[$l]}\n";
             }
 

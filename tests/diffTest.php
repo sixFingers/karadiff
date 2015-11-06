@@ -25,7 +25,6 @@ class DiffTest extends PHPUnit_Framework_TestCase
         $aSliceLength = 1;
         $bSliceLength = 2;
         $provider = new DiffProvider($this->aFileLines, $this->bFileLines);
-        // After this call, $provider will populate additions & removals counters
         $actual = $provider->slices;
 
         $this->assertEquals(2, count($actual), 'Diff slice count mismatch.');

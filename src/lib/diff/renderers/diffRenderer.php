@@ -8,9 +8,12 @@ class DiffRenderer
 {
     protected $provider;
 
-    public function __construct(DiffProvider $provider) {
+    public function __construct(DiffProvider $provider)
+    {
         $this->provider = $provider;
     }
 
-    public function render() {}
+    public function render()
+    {
+    }
 }

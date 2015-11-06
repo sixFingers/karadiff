@@ -19,16 +19,16 @@ class DiffRendererSideBySide extends DiffRenderer
         $additionsOutput = [];
         $commonOutput = [];
 
-        foreach($slices as $slice) {
-            for($l = $ia; $l < $slice->aStart; $l ++) {
+        foreach ($slices as $slice) {
+            for ($l = $ia; $l < $slice->aStart; $l ++) {
                 $removalsOutput[] = '-' . $this->provider->aTokens[$l];
             }
 
-            for($l = $ib; $l < $slice->bStart; $l ++) {
+            for ($l = $ib; $l < $slice->bStart; $l ++) {
                 $additionsOutput[] = '+' . $this->provider->bTokens[$l];
             }
 
-            for($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
+            for ($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
                 $removalsOutput[] = $additionsOutput[] = ' ' . $this->provider->aTokens[$l];
             }
 
@@ -50,18 +50,18 @@ class DiffRendererSideBySide extends DiffRenderer
         $lines = [];
         $l = -1;
 
-        foreach($output as $token) {
+        foreach ($output as $token) {
             $isUpperCase = ctype_upper(mb_substr($token, 1, 1));
             $isNewLine = $isUpperCase || $l == -1;
 
-            if($isNewLine) {
+            if ($isNewLine) {
                 $l ++;
             }
 
             $lines[$l][] = trim($token);
         }
 
-        $lines = array_map(function($line) {
+        $lines = array_map(function ($line) {
             return implode(' ', $line);
         }, $lines);
         $lines = implode("\n", $lines);

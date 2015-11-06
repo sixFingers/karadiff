@@ -17,22 +17,22 @@ class DiffRendererTextWord extends DiffRenderer
         $ia = $ib = 0;
         $output = [];
 
-        foreach($slices as $slice) {
-            for($l = $ia; $l < $slice->aStart; $l ++) {
+        foreach ($slices as $slice) {
+            for ($l = $ia; $l < $slice->aStart; $l ++) {
                 $output[] = [
                     't' => 'removal',
                     'content' => $this->provider->aTokens[$l]
                 ];
             }
 
-            for($l = $ib; $l < $slice->bStart; $l ++) {
+            for ($l = $ib; $l < $slice->bStart; $l ++) {
                 $output[] = [
                     't' => 'addition',
                     'content' => $this->provider->bTokens[$l]
                 ];
             }
 
-            for($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
+            for ($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
                 $output[] = [
                     't' => '',
                     'content' => $this->provider->aTokens[$l]
@@ -45,11 +45,11 @@ class DiffRendererTextWord extends DiffRenderer
 
         $lines = [];
         $l = -1;
-        foreach($output as $token) {
+        foreach ($output as $token) {
             $isUpperCase = ctype_upper(mb_substr($token['content'], 0, 1));
             $isNewLine = $isUpperCase || $l == -1;
 
-            if($isNewLine) {
+            if ($isNewLine) {
                 $l ++;
             }
 
@@ -57,7 +57,7 @@ class DiffRendererTextWord extends DiffRenderer
             $lines[$l][] = $content;
         }
 
-        $lines = array_map(function($line) {
+        $lines = array_map(function ($line) {
             return implode(' ', $line);
         }, $lines);
         $lines = implode("\n", $lines);
@@ -67,7 +67,7 @@ class DiffRendererTextWord extends DiffRenderer
 
     private function wrapToken($token)
     {
-        if($token['t'] == '') {
+        if ($token['t'] == '') {
             return $token['content'];
         }
 
