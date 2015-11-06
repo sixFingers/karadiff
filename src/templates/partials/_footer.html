@@ -1,2 +1,11 @@
+    <script type="text/javascript">
+    var areaAdditions = document.getElementById('area-additions');
+    var areaRemovals = document.getElementById('area-removals');
+    var codeMirrorConfig = {
+        lineNumbers: true
+    };
+    var codeAdditions = CodeMirror.fromTextArea(areaAdditions, codeMirrorConfig);
+    var codeRemovals = CodeMirror.fromTextArea(areaRemovals, codeMirrorConfig);
+    </script>
 </body>
 </html>
