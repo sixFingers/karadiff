@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sides = ['', ''];
+        $sides = null;
         $additionsCount = $removalsCount = 0;
 
         if ($this->request->isMethod(Request::METHOD_POST)) {

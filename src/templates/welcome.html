@@ -10,10 +10,10 @@
         </div>
         <div class="pure-u-1-2"></div>
         <div class="pure-u-1-2">
-            <textarea id="area-removals" class="padded" name="original"><?php echo $sides['removals']; ?></textarea>
+            <textarea id="area-removals" class="padded" name="original"><?php echo $sides ? $sides['removals']: ''; ?></textarea>
         </div>
         <div class="pure-u-1-2">
-            <textarea id="area-additions" class="padded" name="changed"><?php echo $sides['additions']; ?></textarea>
+            <textarea id="area-additions" class="padded" name="changed"><?php echo $sides ? $sides['additions']: ''; ?></textarea>
         </div>
         <div class="pure-u-1-1">
             <div class="padded">
