@@ -20,3 +20,6 @@ At the moment, the webapps crudely outputs diffs like:
 `-word` (removal) `+word` (addition) ` ` (common text).
 
 On the left side are displayed the removals, on the right one the additions.
+
+## Todo
+Among the other things, find a way to control coloring and highlighting for the output in CodeMirror's boxes.
