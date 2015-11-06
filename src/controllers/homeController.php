@@ -3,8 +3,8 @@
 namespace Karadiff\Controllers;
 
 use Karadiff\Helpers\TemplateHelper;
-use Karadiff\Diff\Providers\DiffProviderString;
-use Karadiff\Diff\Renderers\DiffRendererText;
+use Karadiff\Diff\Providers\DiffProviderStringWord;
+use Karadiff\Diff\Renderers\DiffRendererTextWord;
 use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends Controller
@@ -17,9 +17,9 @@ class HomeController extends Controller
         $removals = 0;
 
         if($this->request->isMethod(Request::METHOD_POST)) {
-            $provider = new DiffProviderString($original, $changed);
-            $renderer = new DiffRendererText($provider);
-            $changed = $renderer->render();
+            $provider = new DiffProviderStringWord($original, $changed);
+            $renderer = new DiffRendererTextWord($provider);
+            $diff = $renderer->render();
             $additions = $provider->additions;
             $removals = $provider->removals;
         }
@@ -28,6 +28,7 @@ class HomeController extends Controller
             'title' => 'Diff',
             'original' => $original,
             'changed' => $changed,
+            'diff' => $diff,
             'additions' => $additions,
             'removals' => $removals,
         ));
