@@ -9,6 +9,9 @@ For the moment, the test suite covers the internals of the core diffing library.
 More unit tests are needed for diff providers and renderers.
 There's no functional test coverage yet.
 
+## Personal notes
+The design of the app is intended to be demonstrative. Everything is written from the ground up combining components instead of relying on a single framework. The design is simplicistic but i tried to expose a number of concepts.
+
 ## Sources
 The diff algorithm is inspired by GNU's `diff` and the renderer used in the webapp implements GNU's `wdiff` basic idea.
 The algorithm is called after its creator, Douglas McIlroy.
