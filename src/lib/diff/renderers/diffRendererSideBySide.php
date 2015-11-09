@@ -7,6 +7,13 @@ use Karadiff\Diff\DiffSlice;
 
 class DiffRendererSideBySide extends DiffRenderer
 {
+    public $lineWrapper = 'p';
+    public $tokenWrapper = 'span';
+    public $removalClass = 'removal';
+    public $additionClass = 'addition';
+    public $removalsClass = 'removals';
+    public $additionsClass = 'additions';
+
     public function render()
     {
         $slices = $this->provider->slices;
@@ -25,7 +32,7 @@ class DiffRendererSideBySide extends DiffRenderer
             }
 
             for ($l = $ib; $l < $slice->bStart; $l ++) {
-                $additionsOutput[] = '+' . $this->provider->bTokens[$l];
+                $additionsOutput[] = '+' . $this->provider->aTokens[$l];
             }
 
             for ($l = $slice->aStart; $l < $slice->aStart + $slice->length; $l ++) {
@@ -45,6 +52,34 @@ class DiffRendererSideBySide extends DiffRenderer
         ];
     }
 
+    private function wrapToken($token)
+    {
+        $prefix = mb_substr($token, 0, 1);
+        $class = '';
+        switch ($prefix) {
+            case '-':
+                $class = $this->removalClass;
+                return "<{$this->tokenWrapper} class=\"$class\">$token</{$this->tokenWrapper}>";
+            case '+':
+                $class = $this->additionClass;
+                return "<{$this->tokenWrapper} class=\"$class\">$token</{$this->tokenWrapper}>";
+            default:
+                return $token;
+        }
+    }
+
+    private function wrapLine($line, $num)
+    {
+        $class = '';
+        if (mb_strpos($line, $this->removalClass) !== false) {
+            $class = $this->removalsClass;
+        } else if (mb_strpos($line, $this->additionClass) !== false) {
+            $class = $this->additionsClass;
+        }
+
+        return "<{$this->lineWrapper} class=\"{$class}\">$num $line</{$this->lineWrapper}>";
+    }
+
     private function format($output)
     {
         $lines = [];
@@ -58,13 +93,18 @@ class DiffRendererSideBySide extends DiffRenderer
                 $l ++;
             }
 
-            $lines[$l][] = trim($token);
+            $token = trim($token);
+            $lines[$l][] = $this->wrapToken($token);
         }
 
-        $lines = array_map(function ($line) {
-            return implode(' ', $line);
+        $l = 0;
+        $lines = array_map(function ($line) use (&$l) {
+            $line = $this->wrapLine(implode(' ', $line), $l);
+            $l ++;
+            return $line;
         }, $lines);
-        $lines = implode("\n", $lines);
+
+        $lines = implode('', $lines);
 
         return $lines;
     }
