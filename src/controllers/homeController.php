@@ -13,10 +13,10 @@ class HomeController extends Controller
     {
         $sides = null;
         $additionsCount = $removalsCount = 0;
+        $original = $this->request->request->get('original', '');
+        $changed = $this->request->request->get('changed', '');
 
         if ($this->request->isMethod(Request::METHOD_POST)) {
-            $original = $this->request->request->get('original', '');
-            $changed = $this->request->request->get('changed', '');
             $provider = new DiffProviderStringWord($original, $changed);
             $renderer = new DiffRendererSideBySide($provider);
             $sides = $renderer->render();
@@ -27,6 +27,8 @@ class HomeController extends Controller
         $content = TemplateHelper::render('welcome.html', array(
             'title' => 'Diff',
             'sides' => $sides,
+            'original' => $original,
+            'changed' => $changed,
             'additionsCount' => $additionsCount,
             'removalsCount' => $removalsCount,
         ));

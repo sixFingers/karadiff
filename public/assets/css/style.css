@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     background-color: #ededed;
 }
 
@@ -10,12 +10,37 @@ body {
     margin: 2%;
 }
 
-textarea {
-    display: inline-block;
-    border: 0;
-    outline: none;
-    width: 96%;
-    min-height: 500px;
+table.diff {
+    width: 100%;
+}
+
+table.diff td {
+    width: 50%;
+    vertical-align: top;
+}
+
+table.diff p {
+    margin: 0;
+}
+
+table.diff p.removals {
+    background-color: rgba(255, 0, 0, .3);
+}
+
+table.diff p span.removal {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+table.diff p.additions {
+    background-color: rgba(0, 255, 0, .3);
+}
+
+table.diff p span.addition {
+    background-color: rgba(0, 255, 0, 1);
+}
+
+.pure-g {
+    margin: 10px 0;
 }
 
 button.submit {

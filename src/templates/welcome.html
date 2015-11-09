@@ -2,23 +2,34 @@
 
 <form action="" method="post">
     <div class="pure-g">
-        <div class="pure-u-1-2">
-            <div class="padded">
-                <h1><?php echo $title; ?></h1>
-                <?php echo $additionsCount; ?> additions, <?php echo $removalsCount; ?> removals
-            </div>
+        <div class="pure-u-1">
+            <h1><?php echo $title; ?></h1>
+            <h4><?php echo $additionsCount; ?> additions, <?php echo $removalsCount; ?> removals</h4>
         </div>
-        <div class="pure-u-1-2"></div>
+        <div class="pure-u-1">
+            <table class="diff">
+                <tr>
+                    <td>
+                        <?php echo $sides ? $sides['removals']: ''; ?>
+                    </td>
+                    <td>
+                        <?php echo $sides ? $sides['additions']: ''; ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="pure-g">
         <div class="pure-u-1-2">
-            <textarea id="area-removals" class="padded" name="original"><?php echo $sides ? $sides['removals']: ''; ?></textarea>
+            <textarea id="area-removals" class="padded" name="original"><?php echo $original; ?></textarea>
         </div>
         <div class="pure-u-1-2">
-            <textarea id="area-additions" class="padded" name="changed"><?php echo $sides ? $sides['additions']: ''; ?></textarea>
+            <textarea id="area-additions" class="padded" name="changed"><?php echo $changed; ?></textarea>
         </div>
+    </div>
+    <div class="pure-g">
         <div class="pure-u-1-1">
-            <div class="padded">
-                <button type="submit" class="pure-button pure-button-primary submit">Diff!</button>
-            </div>
+            <button type="submit" class="pure-button pure-button-primary submit">Diff!</button>
         </div>
     </div>
 </form>
