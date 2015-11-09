@@ -18,11 +18,7 @@ The algorithm is called after its creator, Douglas McIlroy.
 This implementation for PHP is partially ported from Tim Peters' implementation as found in the original `difflib` Python library.
 
 ## Current output
-At the moment, the webapps crudely outputs diffs like:
-
-`-word` (removal) `+word` (addition) ` ` (common text).
-
-On the left side are displayed the removals, on the right one the additions.
+The app uses the SideBySide renderer to output a diff-by-line, diff-by-word response. I tried to follow `diffchecker.com/diff` styling. More renderers are available, namely two Text renderers intended for console output. One works on lines (very much like the original `diff`) and the other on words (very much like the original `wdiff`).
 
 ## Todo
-Among the other things, find a way to control coloring and highlighting for the output in CodeMirror's boxes.
+Tests, tests, tests.
