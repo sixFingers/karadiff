@@ -17,25 +17,22 @@ table.diff {
 table.diff td {
     width: 50%;
     vertical-align: top;
+    background-color: white;
 }
 
-table.diff p {
-    margin: 0;
-}
-
-table.diff p.removals {
+table.diff td.removal {
     background-color: rgba(255, 0, 0, .3);
 }
 
-table.diff p span.removal {
-    background-color: rgba(255, 0, 0, 1);
-}
-
-table.diff p.additions {
+table.diff td.addition {
     background-color: rgba(0, 255, 0, .3);
 }
 
-table.diff p span.addition {
+table.diff del {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+table.diff ins {
     background-color: rgba(0, 255, 0, 1);
 }
 

@@ -1,24 +1,19 @@
 <?php require_once 'partials/_header.html'; ?>
 
 <form action="" method="post">
+    <?php if ($differ): ?>
     <div class="pure-g">
         <div class="pure-u-1">
             <h1><?php echo $title; ?></h1>
-            <h4><?php echo $additionsCount; ?> additions, <?php echo $removalsCount; ?> removals</h4>
+            <p>Tokens removed: <?php echo $differ->removals; ?>; tokens added: <?php echo $differ->additions; ?>.</p>
         </div>
         <div class="pure-u-1">
             <table class="diff">
-                <tr>
-                    <td>
-                        <?php echo $sides ? $sides['removals']: ''; ?>
-                    </td>
-                    <td>
-                        <?php echo $sides ? $sides['additions']: ''; ?>
-                    </td>
-                </tr>
+                <?php echo $differ->render(); ?>
             </table>
         </div>
     </div>
+    <?php endif; ?>
     <div class="pure-g">
         <div class="pure-u-1-2">
             <textarea id="area-removals" class="padded" name="original"><?php echo $original; ?></textarea>

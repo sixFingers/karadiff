@@ -3,34 +3,27 @@
 namespace Karadiff\Controllers;
 
 use Karadiff\Helpers\TemplateHelper;
-use Karadiff\Diff\Providers\DiffProviderStringWord;
-use Karadiff\Diff\Renderers\DiffRendererSideBySide;
+use Karadiff\Diff\Differ;
 use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $sides = null;
         $additionsCount = $removalsCount = 0;
         $original = $this->request->request->get('original', '');
         $changed = $this->request->request->get('changed', '');
+        $differ = null;
 
         if ($this->request->isMethod(Request::METHOD_POST)) {
-            $provider = new DiffProviderStringWord($original, $changed);
-            $renderer = new DiffRendererSideBySide($provider);
-            $sides = $renderer->render();
-            $additionsCount = $provider->additions;
-            $removalsCount = $provider->removals;
+            $differ = new Differ($original, $changed);
         }
 
         $content = TemplateHelper::render('welcome.html', array(
             'title' => 'Diff',
-            'sides' => $sides,
+            'differ' => $differ,
             'original' => $original,
-            'changed' => $changed,
-            'additionsCount' => $additionsCount,
-            'removalsCount' => $removalsCount,
+            'changed' => $changed
         ));
 
         $this->response->setContent($content);
