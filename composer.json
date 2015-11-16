@@ -22,8 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Karadiff\\": "src/",
-            "Karadiff\\Diff\\": "src/lib/Diff/"
+            "Karadiff\\": "src/"
         }
     }
 }
