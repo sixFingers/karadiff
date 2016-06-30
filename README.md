@@ -1,5 +1,6 @@
-# karadiff
-A diff utility especially friendly to music lyrics
+# Lyridiff
+The app is a visual tool designed to compare and highlight differences (aka _diffing_) in music lyrics.
+This is similar to plain text diffing, but is specifically geared at recognizing song text components and repeating patterns.
 
 ## Setup
 After cloning, launch from the public folder. Tested against PHP built-in server.
